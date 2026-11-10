@@ -1,10 +1,21 @@
+const postalAddress = {
+  postalCode: '308-0848',
+  addressRegion: '茨城県',
+  addressLocality: '筑西市',
+  streetAddress: '幸町1-26-10',
+  addressCountry: 'JP',
+};
+const openingTimes = { opens: '10:00', closes: '18:00' };
+
 export const shop = {
   name: '幸町の雑貨屋',
-  postalCode: '308-0848',
-  address: '茨城県筑西市幸町1-26-10',
+  postalCode: postalAddress.postalCode,
+  address: `${postalAddress.addressRegion}${postalAddress.addressLocality}${postalAddress.streetAddress}`,
+  postalAddress,
   phone: '0296-45-7718',
   phoneHref: 'tel:0296457718',
-  hours: '10:00〜18:00',
+  hours: `${openingTimes.opens}〜${openingTimes.closes}`,
+  openingTimes,
   closed: '不定休',
   parking: '3〜4台',
   payments: '現金・PayPay',

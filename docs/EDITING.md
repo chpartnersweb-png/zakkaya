@@ -30,6 +30,8 @@
 
 `src/data/shop.ts` で編集します。InstagramボタンのURL・文言は共通データを使うため、冒頭とページ下部に同時反映されます。
 
+住所はファイル先頭の `postalAddress`、営業時間は `openingTimes` を編集してください。表示用の住所・時間とSEOの構造化データに同時反映されます。
+
 イベントの開催日・内容が決まったら、同ファイルの `events` 配列に追加します。
 
 ```ts
@@ -48,11 +50,16 @@ export const events = [
 - `src/components/Featured.astro`：差し替え用の注目アイテム枠
 - `src/components/InstagramButton.astro`：共通のInstagramボタン
 - `src/components/Icon.astro`：ページ内アイコン
+- `src/components/Seo.astro`：canonical・OGP・Xカード・JSON-LDの出力、SNS共有画像のビルド時生成
+- `src/config/seo.mjs`：公開URL（Astro設定・canonical・サイトマップの共通設定）
+- `src/data/seo.ts`：タイトル・説明文・店舗などの構造化データ
+- `src/pages/robots.txt.ts` / `src/pages/sitemap.xml.ts`：クロール用ファイルの静的出力
 - `src/styles/global.css`：ピンク基調の配色、装飾、スマートフォン対応、動きを減らす設定
 - `src/scripts/interactions.ts`：スマートフォンメニュー、商品写真の拡大表示
 - `src/scripts/motion.ts`：スクロールに合わせた各セクションの表示アニメーション
 - `docs/CONTENT-SOURCES.md`：店舗情報と使用画像の出典
 - `docs/GENERATED-ASSETS.md`：生成画像の用途、生成方法、最終プロンプト
+- `docs/SEO.md`：SEO設定の内容、更新方法、公開後の作業
 
 ## ヒーローの画面サイズ対応
 
