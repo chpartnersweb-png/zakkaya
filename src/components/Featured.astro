@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import { featured } from '../data/featured';
+import Icon from './Icon.astro';
+---
+<section id="featured" class="featured section-pad" aria-labelledby="featured-title">
+  <div class="container">
+    <div class="feature-intro">
+      <div>
+        <p class="section-label"><span>02</span> {featured.label}</p>
+        <div class="feature-heading-wrap">
+          <p class="feature-script" aria-hidden="true">{featured.english}</p>
+          <h2 id="featured-title">{featured.title.map((line) => <span>{line}</span>)}</h2>
+          <Icon name="sparkle" class="feature-sparkle" />
+        </div>
+      </div>
+      <div class="feature-copy"><p>{featured.introduction}</p><p>{featured.detail}</p></div>
+    </div>
+    <div class="feature-gallery">
+      {featured.photos.map((photo, index) => (
+        <figure class:list={['feature-photo', { 'feature-photo-main': index === 0 }]}>
+          <a href={photo.image.src} data-photo data-caption={photo.alt} aria-label={`${photo.alt}（写真を拡大）`}>
+            <Image src={photo.image} alt={photo.alt} widths={[400, 720, 1100]} sizes={index === 0 ? '(max-width: 700px) 92vw, 57vw' : '(max-width: 700px) 44vw, 32vw'} format="webp" loading="lazy" style={`object-position: ${photo.position}`} />
+            <span class="photo-zoom" aria-hidden="true">＋</span>
+          </a>
+          <figcaption><span class="photo-index">0{index + 1}</span>{photo.caption}</figcaption>
+        </figure>
+      ))}
+      <div class="gallery-sticker" aria-hidden="true">お気に入りに<br />出会えるかも！<Icon name="heart" /></div>
+    </div>
+    <div class="feature-types">
+      {featured.items.map((item) => <article><span class="item-number">{item.number}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
+    </div>
+    <p class="photo-note">{featured.note}</p>
+  </div>
+</section>

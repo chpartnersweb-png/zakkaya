@@ -1,0 +1,10 @@
+---
+import { shop } from '../data/shop';
+import Icon from './Icon.astro';
+---
+<a class="instagram-button" href={shop.instagram} target="_blank" rel="noopener noreferrer">
+  <Icon name="instagram" />
+  <span>{shop.instagramLabel}</span>
+  <Icon name="external" class="button-arrow" />
+  <span class="sr-only">（新しいタブで開きます）</span>
+</a>

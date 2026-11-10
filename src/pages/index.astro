@@ -1,16 +1,67 @@
 ---
----
+import { Image } from 'astro:assets';
+import hero from '../assets/hero-charms.png';
+import Icon from '../components/Icon.astro';
+import InstagramButton from '../components/InstagramButton.astro';
+import Featured from '../components/Featured.astro';
+import { featured } from '../data/featured';
+import { shop, services, events, mapUrl, mapEmbedUrl } from '../data/shop';
+import '../styles/global.css';
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+const description = `茨城県筑西市の「幸町の雑貨屋」。その時々のトレンド雑貨や、キーホルダー・めじるしチャームのDIYパーツが見つかるお店です。${featured.seoSummary}営業時間10:00〜18:00、不定休。`;
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#fff8f6" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="幸町の雑貨屋｜今、気になる雑貨が見つかるお店。" />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <title>幸町の雑貨屋｜今、気になる雑貨が見つかるお店。</title>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">本文へスキップ</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="幸町の雑貨屋 トップへ"><span class="brand-mark"><Icon name="flower" /></span><span>幸町の雑貨屋<small>SAIWAI-CHO NO ZAKKAYA</small></span></a>
+      <nav class="desktop-nav" aria-label="メインナビゲーション"><a href="#about">お店のこと</a><a href="#featured">今の注目アイテム</a><a href="#service">サービス・イベント</a><a class="nav-access" href="#access"><Icon name="pin" />お店に行く</a></nav>
+      <button class="menu-toggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="スマートフォンメニュー" hidden><a href="#about">お店のこと</a><a href="#featured">今の注目アイテム</a><a href="#service">サービス・イベント</a><a href="#access">店舗情報・アクセス</a></nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <Image class="hero-image" src={hero} alt="" widths={[640, 960, 1536]} sizes="100vw" loading="eager" fetchpriority="high" format="webp" />
+        <div class="hero-content">
+          <p class="hero-eyebrow">茨城県筑西市の、ちいさなときめきスポット</p>
+          <h1 id="hero-title">今、気になる雑貨が<br /><span>見つかるお店。</span></h1>
+          <p class="hero-description">話題のアイテムから、キーホルダーや<br class="mobile-break" />めじるしチャームのDIYパーツまで。<br />自分用のお気に入りや、ちょっとした<br class="mobile-break" />贈りものを探しに来てください。</p>
+          <InstagramButton />
+        </div>
+        <a class="hero-scroll" href="#about"><span>SCROLL TO DISCOVER</span><span aria-hidden="true">↓</span></a>
+      </section>
+      <div class="happy-strip" aria-hidden="true"><span>Little things, big happiness.</span><Icon name="flower" /><span>ときめきを、ひとつずつ。</span><Icon name="flower" /><span>Find your favorite.</span><Icon name="flower" /></div>
+      <section id="about" class="about section-pad" aria-labelledby="about-title">
+        <div class="container"><p class="section-label"><span>01</span> お店のこと</p><div class="about-layout"><div class="about-heading"><p class="english-heading">Hello,<br />little happy<span>!</span></p><h2 id="about-title">「好き」に出会う、<br />ふらっと寄り道。</h2><Icon name="flower" class="about-flower" /></div><div class="about-copy"><p class="about-lead">かわいい。おもしろい。<br />思わず、手に取りたくなる。</p><p>幸町の雑貨屋は、その時々のトレンド雑貨を取りそろえたお店です。自分用のお気に入りも、誰かに贈りたくなるものも。気になるアイテムとの出会いを楽しんでください。</p><div class="about-diy"><span class="tiny-label">CHOOSE & MIX</span><h3>組み合わせる楽しさも。</h3><p>キーホルダーやめじるしチャーム用のDIYパーツも販売しています。好きなパーツを選んで、自分好みの組み合わせに。プレゼント用のギフトラッピングも承ります。</p><div class="about-tags"><span>トレンド雑貨</span><span>DIYパーツ</span><span>贈りもの</span></div></div></div></div></div>
+      </section>
+      <Featured />
+      <section id="service" class="services section-pad" aria-labelledby="service-title">
+        <div class="container"><div class="section-top"><div><p class="section-label"><span>03</span> サービス・イベント</p><h2 id="service-title">お買いものに、<br class="mobile-break" />うれしいこと。</h2></div><p class="section-english" aria-hidden="true">A little extra joy.</p></div><div class="service-grid">{services.map((service) => <article class="service-item"><div class="service-icon"><Icon name={service.icon} /><span>{service.number}</span></div><p class="tiny-label">{service.en}</p><h3>{service.name}</h3><p class="service-tagline">{service.title}</p><p>{service.text}</p></article>)}</div><div class="events"><div class="event-title"><span class="event-flower" aria-hidden="true">✳</span><div><p class="tiny-label">LET'S HAVE FUN!</p><h3>イベントも、<br />お楽しみに。</h3></div></div><div class="event-content"><span class="event-status">EVENT INFORMATION</span>{events.length ? events.map((event) => <article class="event-entry"><p>{event.date}</p><h4>{event.title}</h4><p>{event.description}</p></article>) : <><h4>開催日・内容は、決まり次第お知らせします。</h4><p>お店ではイベントを定期的に開催。<br />新しいお知らせは、このページやInstagramでご案内します。</p></>}</div></div></div>
+      </section>
+      <section id="access" class="access section-pad" aria-labelledby="access-title">
+        <div class="container"><div class="section-top"><div><p class="section-label"><span>04</span> 店舗情報・アクセス</p><h2 id="access-title">お気に入りを探しに、<br />遊びに来てください。</h2></div><Icon name="pin" class="access-pin" /></div><div class="access-layout"><div class="shop-information"><h3>{shop.name}</h3><p class="shop-address">〒{shop.postalCode}<br />{shop.address}</p><dl class="shop-details"><div><dt>営業時間</dt><dd><strong>{shop.hours}</strong><small>全日共通</small></dd></div><div><dt>定休日</dt><dd>{shop.closed}</dd></div><div><dt>電話・FAX</dt><dd><a href={shop.phoneHref}>{shop.phone}</a><small>タップでお電話できます</small></dd></div><div><dt>最寄駅</dt><dd>{shop.stations}</dd></div><div><dt>駐車場</dt><dd>{shop.parking}</dd></div><div><dt>お支払い</dt><dd>{shop.payments}</dd></div></dl></div><div class="map-area"><div class="map-frame"><iframe src={mapEmbedUrl} title="幸町の雑貨屋の所在地：茨城県筑西市幸町1-26-10" width="600" height="480" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div><a class="map-link" href={mapUrl} target="_blank" rel="noopener noreferrer"><span>Googleマップで場所を見る<span class="sr-only">（新しいタブで開きます）</span></span><Icon name="external" /></a><p class="access-note">お車でもお気軽にどうぞ。駐車場は3〜4台分あります。</p></div></div></div>
+      </section>
+      <section class="instagram-section" aria-labelledby="instagram-title"><div class="instagram-decor" aria-hidden="true"><Icon name="flower" /><Icon name="sparkle" /><Icon name="heart" /></div><div class="container instagram-inner"><p class="tiny-label">FOLLOW OUR LITTLE HAPPINESS</p><p class="instagram-word" aria-hidden="true">Instagram</p><h2 id="instagram-title">次の「気になる」は、<br class="mobile-break" />ここで見つかる。</h2><p>新商品も、イベントも。<br />お店の今を、Instagramでお届けします。</p><InstagramButton /><span class="instagram-handle">@zakkaya1</span></div></section>
+    </main>
+    <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark"><Icon name="flower" /></span><span>{shop.name}<small>SAIWAI-CHO NO ZAKKAYA</small></span></a><p>© {new Date().getFullYear()} {shop.name}</p><a class="back-top" href="#top" aria-label="ページの先頭へ">↑</a></footer>
+    <dialog class="photo-dialog" aria-label="商品写真の拡大表示"><button class="dialog-close" type="button" aria-label="写真を閉じる">×</button><figure><img width="1108" height="1477" alt="" /><figcaption></figcaption></figure></dialog>
+    <script>import '../scripts/interactions';</script>
+    <script>import '../scripts/motion';</script>
+  </body>
 </html>
