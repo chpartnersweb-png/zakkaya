@@ -2,8 +2,11 @@
 import { Image } from 'astro:assets';
 import { featured } from '../data/featured';
 import Icon from './Icon.astro';
+import Decoration from './Decoration.astro';
+import InstagramButton from './InstagramButton.astro';
 ---
 <section id="featured" class="featured section-pad" aria-labelledby="featured-title">
+  <div class="checker-trim" aria-hidden="true"></div>
   <div class="container">
     <div class="feature-intro">
       <div>
@@ -11,10 +14,9 @@ import Icon from './Icon.astro';
         <div class="feature-heading-wrap">
           <p class="feature-script" aria-hidden="true">{featured.english}</p>
           <h2 id="featured-title">{featured.title.map((line) => <span>{line}</span>)}</h2>
-          <Icon name="sparkle" class="feature-sparkle" />
         </div>
       </div>
-      <div class="feature-copy"><p>{featured.introduction}</p><p>{featured.detail}</p></div>
+      <div class="feature-copy"><span class="feature-badge">「好き」をぎゅっと、じぶんだけの一個に。</span><p>{featured.introduction}</p><p>{featured.detail}</p></div>
     </div>
     <div class="feature-gallery">
       {featured.photos.map((photo, index) => (
@@ -26,11 +28,13 @@ import Icon from './Icon.astro';
           <figcaption><span class="photo-index">0{index + 1}</span>{photo.caption}</figcaption>
         </figure>
       ))}
-      <div class="gallery-sticker" aria-hidden="true">お気に入りに<br />出会えるかも！<Icon name="heart" /></div>
+      <div class="gallery-sticker" aria-hidden="true">MY FAVORITE!<br />とっておきの<br />むぎゅっ。<Icon name="heart" /></div>
     </div>
+    <Decoration class="feature-charms" />
     <div class="feature-types">
       {featured.items.map((item) => <article><span class="item-number">{item.number}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
     </div>
     <p class="photo-note">{featured.note}</p>
+    <div class="feature-cta"><p>スクイーズのこと、もっと知りたい！</p><InstagramButton label="Instagramでスクイーズの最新情報を見る" /></div>
   </div>
 </section>

@@ -1,10 +1,12 @@
 ---
 import { shop } from '../data/shop';
 import Icon from './Icon.astro';
+interface Props { label?: string; }
+const { label = shop.instagramLabel } = Astro.props;
 ---
 <a class="instagram-button" href={shop.instagram} target="_blank" rel="noopener noreferrer">
   <Icon name="instagram" />
-  <span>{shop.instagramLabel}</span>
-  <Icon name="external" class="button-arrow" />
+  <span>{label}</span>
+  <Icon name="arrow" class="button-arrow" />
   <span class="sr-only">（新しいタブで開きます）</span>
 </a>

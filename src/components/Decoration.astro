@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import garland from '../assets/decorations/charm-garland.png';
+import charms from '../assets/decorations/charm-cluster.png';
+
+interface Props {
+  kind?: 'garland' | 'charms';
+  class?: string;
+  eager?: boolean;
+}
+
+const { kind = 'charms', class: className, eager = false } = Astro.props;
+---
+<Image
+  class:list={['decoration', className]}
+  src={kind === 'garland' ? garland : charms}
+  alt=""
+  aria-hidden="true"
+  widths={kind === 'garland' ? [480, 800, 1200] : [180, 360, 640]}
+  sizes={kind === 'garland' ? '(max-width: 700px) 110vw, 740px' : '(max-width: 700px) 140px, 300px'}
+  format="webp"
+  loading={eager ? 'eager' : 'lazy'}
+  draggable="false"
+/>
