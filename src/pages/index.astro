@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import heroCollage from '../assets/hero-dense-charms.png';
 import Decoration from '../components/Decoration.astro';
 import Icon from '../components/Icon.astro';
 import InstagramButton from '../components/InstagramButton.astro';
@@ -30,6 +32,9 @@ import '../styles/global.css';
     </header>
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-panel" aria-hidden="true">
+          <Image class="hero-collage" src={heroCollage} alt="" widths={[640, 960, 1440, 1920]} sizes="100vw" format="webp" loading="eager" fetchpriority="high" />
+        </div>
         <div class="hero-decorations" aria-hidden="true">
           <Decoration kind="garland" class="hero-garland" eager />
           <Decoration class="hero-charms-left" eager />
@@ -38,9 +43,10 @@ import '../styles/global.css';
         <div class="hero-content">
           <p class="hero-eyebrow">茨城県筑西市の、ちいさなときめきスポット</p>
           <h1 id="hero-title"><span>今、気になる雑貨が</span><span>見つかるお店。</span></h1>
-          <p class="hero-description">話題のアイテムから、キーホルダーや<br class="mobile-break" />めじるしチャームのDIYパーツまで。<br />自分用のお気に入りや、ちょっとした<br class="mobile-break" />贈りものを探しに来てください。</p>
-          <InstagramButton />
-          <a class="hero-feature-link" href="#featured"><span>世界一のスクイーズが作れる</span><Icon name="arrow" /></a>
+          <div class="hero-actions">
+            <a class="hero-feature-link" href="#featured"><Icon name="flower" /><span>世界一のスクイーズが作れる</span></a>
+            <InstagramButton />
+          </div>
         </div>
         <a class="hero-scroll" href="#about"><span>SCROLL TO DISCOVER</span><span aria-hidden="true">↓</span></a>
       </section>

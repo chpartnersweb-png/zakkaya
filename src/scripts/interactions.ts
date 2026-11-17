@@ -22,7 +22,7 @@ document.addEventListener('keydown', (event) => {
     toggle.focus();
   }
 });
-window.matchMedia('(min-width: 1001px)').addEventListener('change', (event) => { if (event.matches) closeMenu(); });
+window.matchMedia('(min-width: 1025px)').addEventListener('change', (event) => { if (event.matches) closeMenu(); });
 
 const dialog = document.querySelector<HTMLDialogElement>('.photo-dialog');
 const dialogImage = dialog?.querySelector('img');
