@@ -1,7 +1,9 @@
 ---
 import { Image } from 'astro:assets';
+import handmadeIllustration from '../assets/decorations/handmade-squishies.png';
+import originalIllustration from '../assets/decorations/original-squishies.png';
+import mellojoyIllustration from '../assets/decorations/mellojoy-squishies.png';
 import { featured } from '../data/featured';
-import Decoration from './Decoration.astro';
 import InstagramButton from './InstagramButton.astro';
 
 const { handmade, original, mellojoy, photos } = featured;
@@ -9,13 +11,25 @@ const { handmade, original, mellojoy, photos } = featured;
 <section id="featured" class="featured section-pad" aria-labelledby="featured-title">
   <div class="checker-trim" aria-hidden="true"></div>
   <div class="container">
-    <Decoration class="feature-charms" />
     <div class="feature-split">
       <div>
         <p class="section-label"><span>02</span> 手作り体験</p>
         <div class="feature-heading-wrap">
           <p class="feature-script" aria-hidden="true">MAKE YOUR OWN SQUEEZE!</p>
-          <h2 id="featured-title"><span>手作り</span><span>スクイーズ</span></h2>
+          <div class="illustrated-heading">
+            <h2 id="featured-title"><span>手作り</span><span>スクイーズ</span></h2>
+            <Image
+              class="decoration heading-illustration"
+              src={handmadeIllustration}
+              alt=""
+              aria-hidden="true"
+              widths={[240, 360, 640]}
+              sizes="(max-width: 400px) 65vw, (max-width: 520px) 260px, (min-width: 901px) and (max-width: 1100px) 27vw, 320px"
+              format="webp"
+              loading="lazy"
+              draggable="false"
+            />
+          </div>
         </div>
         <div class="feature-copy">
           <span class="feature-badge">{handmade.lead}</span>
@@ -37,8 +51,19 @@ const { handmade, original, mellojoy, photos } = featured;
     <div class="feature-intro">
       <div>
         <p class="section-label"><span>03</span> 自社ブランド</p>
-        <div class="feature-heading-wrap">
+        <div class="feature-heading-wrap illustrated-heading">
           <h2 id="original-squeeze-title"><span>オリジナル</span><span>スクイーズ</span></h2>
+          <Image
+            class="decoration heading-illustration"
+            src={originalIllustration}
+            alt=""
+            aria-hidden="true"
+            widths={[240, 360, 640]}
+            sizes="(max-width: 400px) 65vw, (max-width: 520px) 260px, 320px"
+            format="webp"
+            loading="lazy"
+            draggable="false"
+          />
         </div>
       </div>
       <div class="feature-copy">
@@ -70,7 +95,20 @@ const { handmade, original, mellojoy, photos } = featured;
         <p class="section-label"><span>04</span> スクイーズブランド</p>
         <div class="feature-heading-wrap">
           <p class="feature-script" aria-hidden="true">MELLOJOY</p>
-          <h2 id="mellojoy-title"><span>メロジョイ</span></h2>
+          <div class="illustrated-heading">
+            <h2 id="mellojoy-title"><span>メロジョイ</span></h2>
+            <Image
+              class="decoration heading-illustration"
+              src={mellojoyIllustration}
+              alt=""
+              aria-hidden="true"
+              widths={[240, 360, 640]}
+              sizes="(max-width: 400px) 65vw, (max-width: 520px) 260px, (min-width: 901px) and (max-width: 1100px) 25vw, 320px"
+              format="webp"
+              loading="lazy"
+              draggable="false"
+            />
+          </div>
         </div>
         <p class="mellojoy-description">{mellojoy.introduction}</p>
         <InstagramButton label="Instagramでスクイーズの最新情報を見る" />
