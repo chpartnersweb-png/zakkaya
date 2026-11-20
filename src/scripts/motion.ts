@@ -4,9 +4,11 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const groups = [
   '.about > .container > .section-label, .about-heading',
   '.about-copy > *',
+  '.featured .feature-split > *',
   '.feature-intro > div',
+  '.feature-assortment',
   '.feature-photo',
-  '.feature-types > article',
+  '.mellojoy .feature-split > *',
   '.services .section-top',
   '.service-item',
   '.events',

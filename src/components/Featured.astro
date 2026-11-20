@@ -1,40 +1,86 @@
 ---
 import { Image } from 'astro:assets';
 import { featured } from '../data/featured';
-import Icon from './Icon.astro';
 import Decoration from './Decoration.astro';
 import InstagramButton from './InstagramButton.astro';
+
+const { handmade, original, mellojoy, photos } = featured;
 ---
 <section id="featured" class="featured section-pad" aria-labelledby="featured-title">
   <div class="checker-trim" aria-hidden="true"></div>
   <div class="container">
-    <div class="feature-intro">
+    <Decoration class="feature-charms" />
+    <div class="feature-split">
       <div>
-        <p class="section-label"><span>02</span> {featured.label}</p>
+        <p class="section-label"><span>02</span> 手作り体験</p>
         <div class="feature-heading-wrap">
-          <p class="feature-script" aria-hidden="true">{featured.english}</p>
-          <h2 id="featured-title">{featured.title.map((line) => <span>{line}</span>)}</h2>
+          <p class="feature-script" aria-hidden="true">MAKE YOUR OWN SQUEEZE!</p>
+          <h2 id="featured-title"><span>手作り</span><span>スクイーズ</span></h2>
+        </div>
+        <div class="feature-copy">
+          <span class="feature-badge">{handmade.lead}</span>
+          <p>{handmade.introduction}</p>
         </div>
       </div>
-      <div class="feature-copy"><span class="feature-badge">「好き」をぎゅっと、じぶんだけの一個に。</span><p>{featured.introduction}</p><p>{featured.detail}</p></div>
+      <figure class="feature-photo-full">
+        <a href={handmade.photo.image.src} data-photo data-caption={handmade.photo.alt} aria-label={`${handmade.photo.alt}（写真を拡大）`}>
+          <Image src={handmade.photo.image} alt={handmade.photo.alt} widths={[400, 720, 1100]} sizes="(max-width: 520px) 90vw, 440px" format="webp" loading="lazy" />
+          <span class="photo-zoom" aria-hidden="true">＋</span>
+        </a>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="original-squeeze" class="squeeze-brand section-pad" aria-labelledby="original-squeeze-title">
+  <div class="container">
+    <div class="feature-intro">
+      <div>
+        <p class="section-label"><span>03</span> 自社ブランド</p>
+        <div class="feature-heading-wrap">
+          <h2 id="original-squeeze-title"><span>オリジナル</span><span>スクイーズ</span></h2>
+        </div>
+      </div>
+      <div class="feature-copy">
+        <p>{original.introduction}</p>
+      </div>
+    </div>
+    <div class="feature-assortment">
+      <h3>店頭のスクイーズ・関連商品</h3>
+      <p>工場から直接仕入れたスクイーズや、開けるまで中身がわからないブラインドボックスも取りそろえています。写真は店頭商品の一例です。</p>
     </div>
     <div class="feature-gallery">
-      {featured.photos.map((photo, index) => (
-        <figure class:list={['feature-photo', { 'feature-photo-main': index === 0 }]}>
+      {photos.map((photo) => (
+        <figure class="feature-photo">
           <a href={photo.image.src} data-photo data-caption={photo.alt} aria-label={`${photo.alt}（写真を拡大）`}>
-            <Image src={photo.image} alt={photo.alt} widths={[400, 720, 1100]} sizes={index === 0 ? '(max-width: 700px) 92vw, 57vw' : '(max-width: 700px) 44vw, 32vw'} format="webp" loading="lazy" style={`object-position: ${photo.position}`} />
+            <Image src={photo.image} alt={photo.alt} widths={[400, 720, 1100]} sizes="(max-width: 480px) 90vw, (max-width: 700px) 440px, (max-width: 1264px) 46vw, 540px" format="webp" loading="lazy" style={`object-position: ${photo.position}`} />
             <span class="photo-zoom" aria-hidden="true">＋</span>
           </a>
-          <figcaption><span class="photo-index">0{index + 1}</span>{photo.caption}</figcaption>
+          <figcaption>{photo.caption}</figcaption>
         </figure>
       ))}
-      <div class="gallery-sticker" aria-hidden="true">MY FAVORITE!<br />とっておきの<br />むぎゅっ。<Icon name="heart" /></div>
     </div>
-    <Decoration class="feature-charms" />
-    <div class="feature-types">
-      {featured.items.map((item) => <article><span class="item-number">{item.number}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
+  </div>
+</section>
+
+<section id="mellojoy" class="mellojoy section-pad" aria-labelledby="mellojoy-title">
+  <div class="container">
+    <div class="feature-split">
+      <div>
+        <p class="section-label"><span>04</span> スクイーズブランド</p>
+        <div class="feature-heading-wrap">
+          <p class="feature-script" aria-hidden="true">MELLOJOY</p>
+          <h2 id="mellojoy-title"><span>メロジョイ</span></h2>
+        </div>
+        <p class="mellojoy-description">{mellojoy.introduction}</p>
+        <InstagramButton label="Instagramでスクイーズの最新情報を見る" />
+      </div>
+      <figure class="feature-photo-full">
+        <a href={mellojoy.photo.image.src} data-photo data-caption={mellojoy.photo.alt} aria-label={`${mellojoy.photo.alt}（写真を拡大）`}>
+          <Image src={mellojoy.photo.image} alt={mellojoy.photo.alt} widths={[400, 720, 1100]} sizes="(max-width: 520px) 90vw, 440px" format="webp" loading="lazy" />
+          <span class="photo-zoom" aria-hidden="true">＋</span>
+        </a>
+      </figure>
     </div>
-    <p class="photo-note">{featured.note}</p>
-    <div class="feature-cta"><p>スクイーズのこと、もっと知りたい！</p><InstagramButton label="Instagramでスクイーズの最新情報を見る" /></div>
   </div>
 </section>
